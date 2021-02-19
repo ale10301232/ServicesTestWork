@@ -13,29 +13,36 @@ namespace ServicesTestWork
 {
     public partial class Form1 : Form
     {
+        private DBEntryHelper dBEntryHelper = new DBEntryHelper();
         public Form1()
         {
             InitializeComponent();
-            using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=.\TestDB.db; Version=3;"))
+            using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=.\carsOrders.db; Version=3;"))
             {
 
             }
         }
-        /*RED180220211624*/
-        /*Удаить запись из БД*/
-        private void button3_Click(object sender, EventArgs e)
-        {
-            DBEntryHelper dBEntryHelper = new DBEntryHelper();
-            string valueEntry = "0";
-            dBEntryHelper.deleteEntry(valueEntry);
-        }
-
         /*RED180220211750*/
         /*Добавить запись в БД(Добавить заказ)*/
         private void button1_Click(object sender, EventArgs e)
         {
+            dBEntryHelper.addEntryOrder(2, 2, 2);
+        }
+        /*RED190220211611*/
+        /*Редактировать запись*/
+        private void button2_Click(object sender, EventArgs e)
+        {
 
         }
+        /*RED180220211624*/
+        /*Удалить запись из БД*/
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //DBEntryHelper dBEntryHelper = new DBEntryHelper();
+            string valueEntry = "0";
+            dBEntryHelper.deleteEntry(valueEntry);
+        }
+
 
     }
 }
