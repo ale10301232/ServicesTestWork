@@ -87,17 +87,49 @@ namespace ServicesTestWork
         }
         /*RED180220211714*/
         /* Редактирование записи "Заказ"*/
-        public void editOrder()
+        public void editOrder
+            (
+            string brandName,
+            string modelName,
+            string gosNum,
+            int carId,
+            string engineName,
+            int engineId,
+            string serviceName,
+            int serviceId
+            )
         {
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=.\carsOrders.db; Version=3;"))
             {
-                string commandQuery = "UPDATE [orders] SET [file_name] = @value WHERE [id] = @id";
+                string commandQuery = 
+                    "UPDATE [cars] SET " +
+                    "[brand] = @brand" +
+                    "[model] = @model" +
+                    "[gos_number] = @gosNumber" +
+                    " WHERE [id] = @idCar " +
+                    "UPDATE[engine] SET " +
+                    "[name_engine] = @engine" +
+                    " WHERE [id] = @idEngine " +
+                    "UPDATE[services] SET " +
+                    "[service_name] = @service" +
+                    " WHERE [id] = @idService ";
                 SQLiteCommand sqlCommand = new SQLiteCommand(commandQuery, Connect);
-                sqlCommand.Parameters.AddWithValue("@value", "Новое имя файла");
-                sqlCommand.Parameters.AddWithValue("@id", 1);
+                /*RED190220212030*/
+                /*Поля для таблицы cars*/
+                sqlCommand.Parameters.AddWithValue("@brand", brandName);
+                sqlCommand.Parameters.AddWithValue("@model", modelName);
+                sqlCommand.Parameters.AddWithValue("@gos_number", gosNum);
+                sqlCommand.Parameters.AddWithValue("@idCar", carId);
+                /*RED190220212031*/
+                /*Поля для таблицы engine --> поправить engines*/
+                sqlCommand.Parameters.AddWithValue("@engine", engineName);
+                sqlCommand.Parameters.AddWithValue("@idEngine", engineId);
+                /*RED190220212032*/
+                /*Поля для таблицы services*/
+                sqlCommand.Parameters.AddWithValue("@service", serviceName);
+                sqlCommand.Parameters.AddWithValue("@idService", serviceId);
                 Connect.Open();
                 sqlCommand.ExecuteNonQuery();
-
                 Connect.Close();
             }
 
