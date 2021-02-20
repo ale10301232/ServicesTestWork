@@ -23,17 +23,16 @@ namespace ServicesTestWork
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=.\carsOrders.db; Version=3;"))
             {
                 /*Открываем подключение*/
-                Connect.Open();
                 string commandQuery = "SELECT * FROM [engine]";
                 SQLiteCommand sqlCommand = new SQLiteCommand(commandQuery, Connect);
+                Connect.Open();
                 SQLiteDataReader query = sqlCommand.ExecuteReader();
-
                 while (query.Read())
                 {
-                    entries.Add(query.GetString(0));
+                    entries.Add(query.GetString(1));
                 }
                 Connect.Close();
-                comboBox1.Items.Add(entries);
+                comboBox1.Items.Add(entries.ToString());
             }
         }
 
