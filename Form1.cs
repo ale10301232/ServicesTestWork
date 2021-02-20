@@ -26,7 +26,7 @@ namespace ServicesTestWork
         /*Добавить запись в БД(Добавить заказ)*/
         private void button1_Click(object sender, EventArgs e)
         {
-            dBEntryHelper.addEntryOrder(2, 2, 2);
+            dBEntryHelper.editOrder("000", "000", "000", 1, "000", 1, "000", 1);
         }
         /*RED190220211611*/
         /*Редактировать запись*/
@@ -38,7 +38,6 @@ namespace ServicesTestWork
         /*Удалить запись из БД*/
         private void button3_Click(object sender, EventArgs e)
         {
-            //DBEntryHelper dBEntryHelper = new DBEntryHelper();
             string valueEntry = "0";
             dBEntryHelper.deleteEntry(valueEntry);
         }
