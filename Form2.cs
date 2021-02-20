@@ -19,20 +19,28 @@ namespace ServicesTestWork
         public Form2()
         {
             InitializeComponent();
-            List<String> entries = new List<string>(); //
+            List<String> entries = new List<string>();
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=.\carsOrders.db; Version=3;"))
             {
-                /*Открываем подключение*/
-                string commandQuery = "SELECT * FROM [engine]";
+                /*RED200220212352*/
+                /*Предзагрузка элементов из таблицы engine в comboBox1*/
+                string commandQuery = "SELECT id, name_engine FROM [engine]";
                 SQLiteCommand sqlCommand = new SQLiteCommand(commandQuery, Connect);
+                /*Открываем подключение и считываем результат commandQuery*/
                 Connect.Open();
                 SQLiteDataReader query = sqlCommand.ExecuteReader();
+                /*Добавляем результат в список entries*/
                 while (query.Read())
                 {
                     entries.Add(query.GetString(1));
                 }
                 Connect.Close();
-                comboBox1.Items.Add(entries.ToString());
+                /*Добавляем в comboBox1 записи из списка entries*/
+                foreach (var item in entries)
+                {
+                    comboBox1.Items.Add(item);
+                }
+                
             }
         }
 
@@ -40,7 +48,6 @@ namespace ServicesTestWork
         /*Кнопка добавить*/
         private void button1_Click(object sender, EventArgs e)
         {
-            
             string nameEngine = textBox1.Text;
             int engineId = comboBox1.SelectedIndex;
             dBEntryHelper.addEntryServise(nameEngine, ++engineId);
