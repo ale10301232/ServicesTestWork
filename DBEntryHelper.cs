@@ -11,6 +11,7 @@ namespace ServicesTestWork
          * sqlCommand - экземпляр --> передача commandQuery в методе ExecuteNonQuery
          * Connect - строка подключения к БД
          */
+
         /*RED180220211700*/
         /* Удаление записи*/
         public void deleteEntry(string id)
@@ -26,6 +27,7 @@ namespace ServicesTestWork
                 Connect.Close();
             }
         }
+
         /*RED180220211701*/
         /* Добавление записи "Тип двигателя"*/
         public void addEntryEngine(string typeEngine)
@@ -41,6 +43,7 @@ namespace ServicesTestWork
                 Connect.Close();
             }
         }
+
         /*RED180220211704*/
         /* Добавление записи "Заказ"*/
         public void addEntryOrder(int carId, int serviceId, int engineId)
@@ -58,6 +61,7 @@ namespace ServicesTestWork
                 Connect.Close();
             }
         }
+
         /*RED180220211705*/
         /* Добавление записи "Автомобиль"*/
         public void addEntryCars(string model, string brand, string gosNumber)
@@ -75,21 +79,24 @@ namespace ServicesTestWork
                 Connect.Close();
             }
         }
+
         /*RED180220211710*/
         /* Добавление записи "Услуга"*/
-        public void addEntryServise(string nameService)
+        public void addEntryServise(string nameService, int engineId)
         {
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=.\carsOrders.db; Version=3;"))
             {
-                string commandQuery = "INSERT INTO [services] ([service_name]) VALUES (@name)";
+                string commandQuery = "INSERT INTO [services] ([service_name],[engine_id]) VALUES (@name, @engine)";
                 SQLiteCommand sqlCommand = new SQLiteCommand(commandQuery, Connect);
                 sqlCommand.Parameters.AddWithValue("@name", nameService);
+                sqlCommand.Parameters.AddWithValue("@engine", engineId);
                 /*Открываем подключение*/
                 Connect.Open();
                 sqlCommand.ExecuteNonQuery();
                 Connect.Close();
             }
         }
+
         /*RED180220211714*/
         /* Редактирование таблицы Cars*/
         public void editCar(string brandName, string modelName, string gosNum, int carId)
@@ -111,6 +118,7 @@ namespace ServicesTestWork
             }
 
         }
+
         /*RED200220210949*/
         /* Редактирование таблицы Двигатели*/
         public void editEngine(string engineName, int engineId)
@@ -130,6 +138,7 @@ namespace ServicesTestWork
             }
 
         }
+
         /*RED200220210950*/
         /* Редактирование таблицы Услуги*/
         public void editService(string serviceName, int serviceId, int engineId)

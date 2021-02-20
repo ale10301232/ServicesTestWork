@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace ServicesTestWork
 {
+    /*RED200220211158*/
+    /*Форма Заказы*/
     public partial class Form1 : Form
     {
         private DBEntryHelper dBEntryHelper = new DBEntryHelper();
@@ -26,7 +28,7 @@ namespace ServicesTestWork
         /*Добавить запись в БД(Добавить заказ)*/
         private void button1_Click(object sender, EventArgs e)
         {
-            dBEntryHelper.editOrder("000", "000", "000", 1, "000", 1, "000", 1);
+
         }
         /*RED190220211611*/
         /*Редактировать запись*/
@@ -42,6 +44,10 @@ namespace ServicesTestWork
             dBEntryHelper.deleteEntry(valueEntry);
         }
 
-
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+        }
     }
 }
