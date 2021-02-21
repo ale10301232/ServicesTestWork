@@ -20,28 +20,17 @@ namespace ServicesTestWork
         {
             InitializeComponent();
             List<String> entries = new List<string>();
-            using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=.\carsOrders.db; Version=3;"))
+            entries.Clear();
+            comboBox1.Items.Clear();
+            /*RED200220212352*/
+            /*Предзагрузка элементов из таблицы engine в comboBox1*/
+            string commandQuery = "SELECT id, name_engine FROM [engine]";
+            entries = dBEntryHelper.selectRowEngine(commandQuery);
+            foreach (var item in entries)
             {
-                /*RED200220212352*/
-                /*Предзагрузка элементов из таблицы engine в comboBox1*/
-                string commandQuery = "SELECT id, name_engine FROM [engine]";
-                SQLiteCommand sqlCommand = new SQLiteCommand(commandQuery, Connect);
-                /*Открываем подключение и считываем результат commandQuery*/
-                Connect.Open();
-                SQLiteDataReader query = sqlCommand.ExecuteReader();
-                /*Добавляем результат в список entries*/
-                while (query.Read())
-                {
-                    entries.Add(query.GetString(1));
-                }
-                Connect.Close();
-                /*Добавляем в comboBox1 записи из списка entries*/
-                foreach (var item in entries)
-                {
-                    comboBox1.Items.Add(item);
-                }
-                
+                comboBox1.Items.Add(item);
             }
+
         }
 
         /*RED200220211155*/
@@ -50,7 +39,19 @@ namespace ServicesTestWork
         {
             string nameEngine = textBox1.Text;
             int engineId = comboBox1.SelectedIndex;
-            dBEntryHelper.addEntryServise(nameEngine, ++engineId);
+            /*RED210220211335*/
+            if (nameEngine != "" && comboBox1.SelectedIndex != -1)
+            {
+                dBEntryHelper.addEntryServise(nameEngine, ++engineId);
+                MessageBox.Show("Запись добавлена");
+            }
+            else
+            {
+                MessageBox.Show("Имя услуги и тип двигателя не может быть пустым");
+            }
+            
+            textBox1.Text = "";
+
         }
 
         /*RED200220211151*/

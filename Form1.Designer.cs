@@ -36,7 +36,10 @@ namespace ServicesTestWork
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.dataSet1 = new System.Data.DataSet();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -44,15 +47,15 @@ namespace ServicesTestWork
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(415, 269);
+            this.dataGridView1.Size = new System.Drawing.Size(657, 370);
             this.dataGridView1.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(423, 12);
+            this.button1.Location = new System.Drawing.Point(690, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(186, 23);
             this.button1.TabIndex = 4;
@@ -62,7 +65,7 @@ namespace ServicesTestWork
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(423, 41);
+            this.button2.Location = new System.Drawing.Point(690, 41);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(186, 23);
             this.button2.TabIndex = 5;
@@ -72,7 +75,7 @@ namespace ServicesTestWork
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(423, 70);
+            this.button3.Location = new System.Drawing.Point(690, 70);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(186, 23);
             this.button3.TabIndex = 6;
@@ -82,7 +85,7 @@ namespace ServicesTestWork
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(424, 100);
+            this.button4.Location = new System.Drawing.Point(691, 100);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(185, 23);
             this.button4.TabIndex = 7;
@@ -90,11 +93,26 @@ namespace ServicesTestWork
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "NewDataSet";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(690, 359);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(107, 23);
+            this.button5.TabIndex = 8;
+            this.button5.Text = "Обновить данные";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 270);
+            this.ClientSize = new System.Drawing.Size(909, 394);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -103,6 +121,7 @@ namespace ServicesTestWork
             this.Name = "Form1";
             this.Text = "Заказы";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -116,6 +135,8 @@ namespace ServicesTestWork
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Data.DataSet dataSet1;
+        private System.Windows.Forms.Button button5;
     }
 }
 
