@@ -20,9 +20,9 @@ namespace ServicesTestWork
         {
             InitializeComponent();
             List<String> entries = new List<string>();
-            /*RED200220212352*/
             entries.Clear();
             comboBox1.Items.Clear();
+            /*RED200220212352*/
             /*Предзагрузка элементов из таблицы engine в comboBox1*/
             string commandQuery = "SELECT id, name_engine FROM [engine]";
             entries = dBEntryHelper.selectRowEngine(commandQuery);
@@ -78,11 +78,11 @@ namespace ServicesTestWork
         private void button1_Click(object sender, EventArgs e)
         {
             
-            string modelCar = textBox1.Text;
-            string brandCar = textBox2.Text;
-            string gosNumber = textBox3.Text;
-            int engineId = Convert.ToInt32(comboBox1.SelectedIndex + 1);
-            int serviceId = Convert.ToInt32(comboBox2.SelectedIndex + 1);
+            string modelCar = textBox1.Text; // Модель автомобиля
+            string brandCar = textBox2.Text; // Марка автомобиля
+            string gosNumber = textBox3.Text; // Гос.номер автомобиля
+            int engineId = Convert.ToInt32(comboBox1.SelectedIndex + 1); // тип двигателя
+            int serviceId = Convert.ToInt32(comboBox2.SelectedIndex + 1); // услуга
             if (modelCar != "" &&
                 brandCar != "" &&
                 gosNumber != "" &&
@@ -103,6 +103,8 @@ namespace ServicesTestWork
             
         }
 
+        /*RED220220210300*/
+        /*Кнопка отменить*/
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();

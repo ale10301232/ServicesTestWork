@@ -21,11 +21,14 @@ namespace ServicesTestWork
             InitializeComponent();
 
         }
-        int currentIdCar = 0;
-        int currentOdOrder = 0;
+        int currentIdCar = 0; //ГП для передаваемого id авто
+        int currentOdOrder = 0; //ГП для передаваемого id заказа
+
+        /*RED220220210310*/
+        /*Вспомогательный метод :) */
         public void showFormFields(List<String> idFields)
         {
-            int carIdField = Convert.ToInt32(idFields[0]);
+            int carIdField = Convert.ToInt32(idFields[0]); // ---
             this.currentIdCar = Convert.ToInt32(idFields[0]);
             this.currentOdOrder = Convert.ToInt32(idFields[3]);
             List<String> entriesEngine = new List<string>();
@@ -64,25 +67,40 @@ namespace ServicesTestWork
                     }
                 }
                 Connect.Close();
-                textBox1.Text = entriesSelectOrder[0];
-                textBox2.Text = entriesSelectOrder[1];
-                textBox3.Text = entriesSelectOrder[2];
+                textBox1.Text = entriesSelectOrder[0]; //Модель
+                textBox2.Text = entriesSelectOrder[1]; //Марка
+                textBox3.Text = entriesSelectOrder[2]; //Гос. номер
             
 
 
             }
 
         }
+
         /*RED220220210155*/
         /*Кнопка записать*/
         private void button1_Click(object sender, EventArgs e)
         {
             int engineId = Convert.ToInt32(comboBox1.SelectedIndex + 1);
             int serviceId = Convert.ToInt32(comboBox2.SelectedIndex + 1);
-            dBEntryHelper.editCar(textBox1.Text, textBox2.Text, textBox3.Text, currentIdCar);
-            dBEntryHelper.editEntryOrder(currentIdCar, engineId, serviceId, currentOdOrder);
-            this.Close();
+            if (textBox1.Text != "" &&
+                textBox2.Text != "" &&
+                textBox3.Text != "" &&
+                engineId != 0 &&
+                serviceId != 0
+                )
+            {
+                dBEntryHelper.editCar(textBox1.Text, textBox2.Text, textBox3.Text, currentIdCar);
+                dBEntryHelper.editEntryOrder(currentIdCar, engineId, serviceId, currentOdOrder);
+                MessageBox.Show("Запись добавлена");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Все поля должны быть заполнены");
+            }
         }
+
         /*RED220220210150*/
         /*comboBox1 - смена типа двигателя, заполнение comboBox2 услугами*/
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -113,6 +131,8 @@ namespace ServicesTestWork
             }
         }
 
+        /*RED220220210305*/
+        /*Кнопка отменить*/
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
