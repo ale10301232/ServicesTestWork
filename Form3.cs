@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace ServicesTestWork
 {
+    //"^[0-9]+[,]+[0-9]+";
     /*RED210220212306*/
     /*Форма добавление новой записи в заказы*/
     public partial class Form3 : Form
