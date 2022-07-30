@@ -32,6 +32,7 @@ namespace ServicesTestWork
             FuelConsumption = fuelConsumption;
         }
         /*Подсчёт расстояния*/
+        /*RED300720220000*/
         public double GetRoadValue()
         {
             double roadResult;
@@ -44,6 +45,7 @@ namespace ServicesTestWork
             return roadResult;
         }
         /*Подсчёт времени на поездку*/
+        /*RED300720220000*/
         public double GetRoadTimeValue(int roadValue)
         {
             double fuelResult;
@@ -62,6 +64,7 @@ namespace ServicesTestWork
 
         }
         /*Подсчёт расстояния (с пассажирами)*/
+        /*RED300720220000*/
         public double GetRoadValueWPassengers()
         {
             double roadResult, roadResultPassengers;
@@ -97,6 +100,7 @@ namespace ServicesTestWork
 
         }
         /*Подсчёт расстояния(с грузом)*/
+        /*RED300720220000*/
         public double GetRoadValueWLoadCapacityAuto()
         {
             double roadResult, roadResultLoadCapacity;
