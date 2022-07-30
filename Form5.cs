@@ -20,6 +20,7 @@ namespace ServicesTestWork
             InitializeComponent();
         }
         /*Кнопка Рассчитать*/
+        /*RED300720220000*/
         private void button1_Click(object sender, EventArgs e)
         {
             int selectedItemCarType = comboBox1.SelectedIndex; //  Выбранный Тип автомобиля
@@ -41,6 +42,7 @@ namespace ServicesTestWork
                     resultMainFuel + " ч. на поездку без учёта груза и пассажиров");
 
                 /*Выбран легковой автомобиль*/
+                /*RED300720220000*/
                 if (selectedItemCarType == 0)
                 {
                     if (comboBox2.SelectedIndex > -1)
@@ -60,6 +62,7 @@ namespace ServicesTestWork
                 }
 
                 /*Выбран грузовой автомобиль*/
+                /*RED300720220000*/
                 if (selectedItemCarType == 1)
                 {
                     if (textBox3.Text != "")
@@ -86,6 +89,7 @@ namespace ServicesTestWork
             }
         }
         /*Скрытие полей*/
+        /*RED300720220000*/
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             label6.Text = "";
@@ -113,6 +117,7 @@ namespace ServicesTestWork
             }
         }
         /* Валидация вводимых данных*/
+        /*RED300720220000*/
         public bool ValidateKeyPress(char key)
         {
             if (!Char.IsDigit(key) && key != 8 && key != 44) // цифры, BackSpace и запятая
@@ -126,6 +131,7 @@ namespace ServicesTestWork
         }
 
         /*Назначаем валидацию на текстовые поля*/
+        /*RED300720220000*/
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = ValidateKeyPress(e.KeyChar);
